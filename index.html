@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+<title></title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="css/layout.css" type="text/css" media="screen">
+<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+<script src="js/cufon-yui.js" type="text/javascript"></script>
+<script src="js/cufon-replace.js" type="text/javascript"></script>
+<script src="js/Open_Sans_400.font.js" type="text/javascript"></script>
+<script src="js/Open_Sans_Light_300.font.js" type="text/javascript"></script>
+<script src="js/Open_Sans_Semibold_600.font.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/tms-0.3.js"></script>
+<script type="text/javascript" src="js/tms_presets.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script src="js/FF-cash.js" type="text/javascript"></script>
+</head>
+<body  id="page1">
+	<div class="bg">
+		<div class="main">
+			<header>
+			<div class="menu">
+				<div class="row-2">
+					<nav>
+						<ul class="menu">
+						  <li><a class="active" href="index.html">Anasayfa</a></li>
+						  <li><a href="hakkımızda.html">Hakkimizda</a></li>
+						  <li><a href="kiralama.html">Kiralama</a></li>
+							<li><a href="galeri.html">Galeri</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <hr>
+      <center><p><font color="#000">UZUN YILLARDIR EN GÜZEVENİLİR VE EN KALİTE ARAÇLAR BİZDEDİR</font></p></center>
+      <hr>
+				<div class="container" style="margin-top:80px";>
+ <div class="slider1">
+		<div class="row">
+      <div class="col-md-4">
+        <ul id="mansetYazi" class="list-group">
+          <li class="list-group-item">Araba-1</li>
+          <li class="list-group-item">Araba-2</li>
+          <li class="list-group-item">Araba-3</li>
+          <li class="list-group-item">Araba-4</li>
+          <li class="list-group-item">Araba-5</li>
+        </ul>
+      </div>
+
+      <div class="col-md-8">
+        <ul id="mansetResim" class="list-group">
+          <li class="list-group-item">
+            <a href="#">
+              <img src="img/1.jpg" style="width: 700px;height: 300px">
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">
+              <img src="img/2.jpg" style="width: 700px;height: 300px">
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">
+              <img src="img/3.jpg" style="width: 700px;height: 300px">
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">
+              <img src="img/4.jpg" style="width: 700px;height: 300px">
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a href="#">
+              <img src="img/5.jpg" style="width: 700px;height: 300px">
+            </a>
+          </li>
+        </ul>
+
+        <div class="btn-group" id="butonlar">
+          <button type="button" class="btn btn-success">1</button>
+          <button type="button" class="btn btn-success">2</button>
+          <button type="button" class="btn btn-success">3</button>
+          <button type="button" class="btn btn-success">4</button>
+          <button type="button" class="btn btn-success">5</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+	<script type="text/javascript"> Cufon.now(); </script>
+	<script type="text/javascript">
+	$(function () {
+		 var s = 0;
+		 $("#mansetResim li").hide();
+		 $("#mansetResim li:first").show();
+
+		 $("#mansetYazi li:first").addClass("active");
+
+		 $("#butonlar button:first").removeClass();
+		 $("#butonlar button:first").addClass("btn btn-danger");
+
+		 $("#mansetYazi li, #butonlar button").hover(function () {
+			 var index = $(this).index();
+			 $.haber(index);
+		 });
+
+		 setInterval(function () {
+			 s++;
+
+			 if (s > 4) { s = 0; }
+			 $.haber(s);
+		 }, 3000);
+
+
+		 $.haber = function (index) {
+			 $("#mansetResim li").hide();
+			 $("#mansetResim li:eq(" + index + ")").show();
+
+			 $("#mansetYazi li").removeClass("active");
+			 $("#mansetYazi li:eq(" + index + ")").addClass("active");
+
+
+			 $("#butonlar button").removeClass();
+			 $("#butonlar button").addClass("btn btn-success");
+
+			 $("#butonlar button:eq(" + index + ")").removeClass();
+			 $("#butonlar button:eq(" + index + ")").addClass("btn btn-danger");
+		 };
+	 });
+		$(function(){
+			$('.slider')._TMS({
+				prevBu:'.prev',
+				nextBu:'.next',
+				playBu:'.play',
+				duration:800,
+				easing:'easeOutQuad',
+				preset:'simpleFade',
+				pagination:false,
+				slideshow:3000,
+				numStatus:false,
+				pauseOnHover:true,
+				banners:true,
+				waitBannerAnimation:false,
+				bannerShow:function(banner){
+					banner
+						.hide()
+						.fadeIn(500)
+				},
+				bannerHide:function(banner){
+					banner
+						.show()
+						.fadeOut(500)
+				}
+			});
+		})
+	</script>
+</body>
+</html>
